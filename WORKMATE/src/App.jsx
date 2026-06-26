@@ -8,7 +8,7 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem("tasks" , JSON.stringify(tasks))
-  });
+  }, [tasks]);
 
   const addTask = (task) => {
     setTasks([...tasks,task]);
@@ -24,15 +24,28 @@ export default function App() {
     setTasks(tasks.filter((_ , i) => i!= index))
   }
 
+  const clearTasks = () => {
+    setTasks([]);
+  }
+
 return (
   <div>
     <h1>WORKMATE</h1>
-    <h4><i>the friendly task manager</i></h4>
+    <h4><i>Your Friendly Task Manager</i></h4>
+
     <Taskform addTask={addTask}/>
-    <Tasklist tasks = {tasks}
-    updateTask = {updateTask}
-    deleteTask = {deleteTask}/>
-    <ProgressTracker />
+
+    <Tasklist
+      tasks={tasks}
+      updateTask={updateTask}
+      deleteTask={deleteTask}
+    />
+
+    <ProgressTracker tasks={tasks}/>
+
+    {tasks.length>0 &&
+    (<button onClick={clearTasks}
+      className='clear-btn'>Clear All Tasks</button> )}
   </div>
 )
 }
