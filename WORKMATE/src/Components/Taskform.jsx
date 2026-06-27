@@ -30,18 +30,19 @@ export default function TaskForm({addTask}) {
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
         >
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
+            <option value="All">All</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
         </select>
 
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="general">General</option>
-          <option value="work">Work</option>
-          <option value="personal">Personal</option>
+          <option value="General">General</option>
+          <option value="Work">Work</option>
+          <option value="Personal">Personal</option>
         </select>
       </div>
     </form>
